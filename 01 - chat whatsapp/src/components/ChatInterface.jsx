@@ -4,7 +4,7 @@ export default function ChatInterface() {
   const [message, setMessage] = useState("");
   const [Chat, setChat] = useState([]);
   const [visibleChat, setVisibleChat] = useState(false);
-
+  let date = new Date();
   const handleTexting = (event) => {
     const newValue = event.target.value; // Obtiene el valor actual del input
     setMessage(newValue);
@@ -49,7 +49,12 @@ export default function ChatInterface() {
         {visibleChat &&
           Chat.map((message, index) => (
             <div key={index} className="w-[50%] bg-white rounded-lg p-2 my-2">
-              <p className="text-md">{message}</p>
+              <p className="text-md">
+                {message}
+                <span className="text-xs text-gray-400">
+                  {date.getHours()}:{date.getMinutes()}
+                </span>
+              </p>
             </div>
           ))}
       </main>
