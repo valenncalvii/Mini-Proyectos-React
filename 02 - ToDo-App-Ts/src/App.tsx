@@ -79,6 +79,19 @@ const App = () => {
     setTodos((prevTodos) => [...prevTodos, newTodo]);
   };
 
+  const handleEditTodo = ({
+    id,
+    title,
+  }: Pick<TodoType, "id" | "title">): void => {
+    const newTodos = todos.map((todo) => {
+      if (todo.id === id) {
+        return { ...todo, title };
+      }
+      return todo;
+    });
+    setTodos(newTodos);
+  };
+
   return (
     <div className="todoapp">
       <Header onAddTodo={handleAddTodo}></Header>
@@ -86,6 +99,7 @@ const App = () => {
         onToggleCompleteTodo={handleCompleted}
         onRemoveTodo={handleRemove}
         todos={filteredTodos}
+        setTitle={handleEditTodo}
       />
       <Footer
         activeCount={activeCount}

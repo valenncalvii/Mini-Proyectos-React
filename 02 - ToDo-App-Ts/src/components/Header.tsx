@@ -7,7 +7,7 @@ interface Props {
 const Header: React.FC<Props> = ({ onAddTodo }) => {
   return (
     <header>
-      <h1>Todo</h1>
+      <h1>ToDo List</h1>
       <CreateTodo saveTodo={onAddTodo} />
     </header>
   );
